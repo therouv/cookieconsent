@@ -27,7 +27,7 @@ Some third party services require you to insert a script tag into your HTML page
 
 ### Script wrapping
 
-Some services are not inserted in a SCRIPT tag and are obscured by layers of other code. Thats why this script creates a global wrapper function what you can use to wrap and blovk any JS code.
+Some services are not inserted in a SCRIPT tag and are obscured by layers of other code. Thats why this script creates a global wrapper function what you can use to wrap and block any JS code.
 
 ### Local cookies
 
@@ -40,6 +40,7 @@ Finally the local cookies set on your domain can be also filtered by overriding 
 2. Include the script file into your HTML page **before everything else.**
 
 ```
+<link rel="stylesheet" href="cookieconsent.css"/>
 <script src="cookieconsent.js"></script>
 ```
 

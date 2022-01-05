@@ -7,27 +7,25 @@ import Configuration from './Configuration';
 import RemoveCookies from './RemoveCookies';
 
 export default class CookieConsent {
+    init(configObject) {
+        new Configuration(configObject);
 
-  init(configObject) {
-    new Configuration(configObject);
+        const removeCookies = new RemoveCookies();
+        const insertScriptFilter = new InsertScriptFilter();
+        const scriptTagFilter = new ScriptTagFilter();
+        const wrapperFilter = new WrapperFilter();
+        const localCookieFilter = new LocalCookieFilter();
 
-    const removeCookies = new RemoveCookies();
-    const insertScriptFilter = new InsertScriptFilter();
-    const scriptTagFilter = new ScriptTagFilter();
-    const wrapperFilter = new WrapperFilter();
-    const localCookieFilter = new LocalCookieFilter();
+        removeCookies.init();
+        insertScriptFilter.init();
+        scriptTagFilter.init();
+        wrapperFilter.init();
+        localCookieFilter.init();
 
-    removeCookies.init();
-    insertScriptFilter.init();
-    scriptTagFilter.init();
-    wrapperFilter.init();
-    localCookieFilter.init();
+        const UI = new Interface();
 
-    const UI = new Interface();
-
-    UI.buildInterface(() => {
-      UI.addEventListeners();
-    });
-  }
-
+        UI.buildInterface(() => {
+            UI.addEventListeners();
+        });
+    }
 }

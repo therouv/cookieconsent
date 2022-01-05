@@ -6,10 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel src/index.html --no-hmr",
-    "build": "npm run build:nomin && npm run build:min && npm run build:docs",
-    "build:nomin": "parcel build src/index.js --out-dir build --public-url . --out-file cookieconsent.js --no-minify",
-    "build:min": "parcel build src/index.js --out-dir build --public-url . --out-file cookieconsent.min.js",
-    "build:docs": "parcel build src/index.js --out-dir docs_src/src/assets/js --public-url . --out-file cookieconsent.min.js"
+    "build": "npm run build:js && npm run build:min:js && npm run build:css && npm run build:min:css && npm run build:docs",
+    "build:css": "parcel build src/style.scss --out-dir build --public-url . --out-file cookieconsent.css --no-minify",
+    "build:js": "parcel build src/index.js --out-dir build --public-url . --out-file cookieconsent.js --no-minify",
+    "build:min:css": "parcel build src/style.scss --out-dir build --public-url . --out-file cookieconsent.min.css",
+    "build:min:js": "parcel build src/index.js --out-dir build --public-url . --out-file cookieconsent.min.js",
+    "build:docs": "parcel build src/index.js --out-dir docs_src/src/assets/js --public-url . --out-file cookieconsent.min.js && parcel build src/style.scss --out-dir docs_src/src/assets/css --public-url . --out-file cookieconsent.min.css"
   },
   "repository": {
     "type": "git",
@@ -26,9 +28,10 @@
     "babel-core": "^6.26.3",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "core-js": "^2.6.5",
-    "parcel-bundler": "^1.11.0",
-    "redom": "^3.18.0"
+    "core-js": "^2.6.12",
+    "parcel-bundler": "^1.12.5",
+    "redom": "^3.27.1",
+    "sass": "^1.45.2"
   },
   "dependencies": {}
 }
