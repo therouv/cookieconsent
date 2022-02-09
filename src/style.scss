@@ -6,7 +6,6 @@
 #cconsent-bar {
     background-color: var(--barColor);
     color: var(--barTextColor);
-    padding: 15px;
     text-align: right;
     font-family: sans-serif;
     font-size: 14px;
@@ -26,27 +25,111 @@
     }
 
     .ccb__wrapper {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        max-width: 1800px;
-        margin: 0 auto;
         width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px 10px;
+        @media (max-width: 600px) {
+            padding: 30px 10px;
+        }
     }
 
     .ccb__left {
-        align-self: center;
-        text-align: left;
-        margin: 15px 0;
+        margin-bottom: 25px;
+
+        .cc-text-container {
+            display: flex;
+            align-items: center;
+            position: relative;
+            text-align: left;
+            overflow: auto;
+
+            @media (max-width: 600px) {
+                margin: 0 10px;
+                line-height: 18px;
+            }
+
+            .cc-image-container {
+                display: flex;
+                align-items: center;
+                width: 175px;
+                height: auto;
+
+                @media (max-width: 600px) {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    min-width: 60px;
+                    height: 60px;
+                    padding: 0;
+                }
+
+                .cc-image {
+                    width: 175px;
+                    height: auto;
+
+                    @media (max-width: 600px) {
+                        width: 60px;
+                    }
+                }
+            }
+
+            .cc-text {
+                padding-left: 20px;
+
+                @media (max-width: 600px) {
+                    padding-left: 0;
+                }
+
+                .bar-text-heading {
+                    color: var(--barTextColor);
+                    font-size: 18px;
+                    font-weight: 700;
+                    line-height: 24px;
+
+                    @media (max-width: 600px) {
+                        display: block;
+                        font-size: 16px;
+                    }
+                }
+
+                .bar-text {
+                    color: var(--barTextColor);
+                    margin-top: 8px;
+                    line-height: 21px;
+                }
+            }
+        }
+
+        &-with-image {
+            .cc-text-container {
+                .cc-text {
+                    .bar-text-heading {
+                        @media (max-width: 600px) {
+                            margin-left: 80px;
+                            min-height: 80px;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     .ccb__right {
-        align-self: center;
+        width: 100%;
+        background-color: var(--barColor);
         white-space: nowrap;
 
-        > div {
-            display: inline-block;
-            color: #fff;
+        .ccb__button {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            color: var(--barTextColor);
+
+            @media (max-width: 600px) {
+                flex-wrap: wrap;
+            }
         }
     }
 
@@ -55,7 +138,15 @@
         color: var(--barTextColor);
 
         &.ccb__edit {
-            margin-right: 15px;
+            margin-left: 50px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all .5s ease-out;
+
+            @media (max-width: 600px) {
+                display: block;
+                margin: 0 auto;
+            }
         }
     }
 
@@ -64,30 +155,30 @@
     }
 
     button.consent-given {
-        line-height: normal;
-        font-size: 14px;
+        padding: 8px 90px;
+        font-size: 18px;
+        line-height: 26px;
         border: none;
-        padding: 10px 10px;
+        border-radius: 5px;
         color: var(--barPrimaryButtonTextColor);
         background-color: var(--barPrimaryButtonColor);
+        transition: background-color .5s ease-out;
+
+        @media (max-width: 600px) {
+            width: 100%;
+            margin-bottom: 20px;
+        }
 
         &:hover {
             background-color: var(--barPrimaryButtonHoverColor);
         }
     }
 
-    button.consent-decline {
-        line-height: normal;
-        font-size: 14px;
-        border: none;
-        padding: 10px 10px;
-        color: var(--barPrimaryButtonColor);
-        background-color: var(--barPrimaryButtonTextColor);
-        margin-right: 10px;
-        border: 1px solid var(--barPrimaryButtonColor);
-    }
-
     .ccb__close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 20px;
         font-weight: 600;
         cursor: pointer;
         font-size: 26px;

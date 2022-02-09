@@ -29,6 +29,7 @@ export default class Configuration {
                 barPrimaryButtonColor: '#fff',
                 barPrimaryButtonHoverColor: '#fff',
                 barPrimaryButtonTextColor: '#2c7cbf',
+                barImageUrl: false,
                 modalPrimaryButtonColor: '#4285f4',
                 modalPrimaryButtonHoverColor: '#0d60ea',
                 modalPrimaryButtonTextColor: '#fff',

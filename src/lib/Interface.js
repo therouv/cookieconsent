@@ -22,22 +22,37 @@ export default class Interface {
         --modalSecondaryButtonColor: ${window.CookieConsent.config.theme.modalSecondaryButtonColor};
         --modalSecondaryButtonHoverColor: ${window.CookieConsent.config.theme.modalSecondaryButtonHoverColor};
         --modalSecondaryButtonTextColor: ${window.CookieConsent.config.theme.modalSecondaryButtonTextColor};
+        --barImageUrl: ${window.CookieConsent.config.theme.barImageUrl}
       }`);
     }
 
     buildBar() {
         let description = Language.getTranslation(window.CookieConsent.config, window.CookieConsent.config.language.current, 'barMainText')
-        let div = el('div.cc-text')
-        div.innerHTML = description
+
+        let barText = el('div.cc-text')
+        barText.innerHTML = description
+
+        let ccbLeftQuery = 'div.ccb__left'
+        if (window.CookieConsent.config.theme.barImageUrl) {
+            ccbLeftQuery = 'div.ccb__left.ccb__left-with-image'
+        }
+
         return el('div#cconsent-bar.ccb--hidden',
             el(`div.ccb__wrapper`,
-                el('div.ccb__left',
-                    div
+                el(ccbLeftQuery,
+                    el('div.cc-text-container',
+                        (window.CookieConsent.config.theme.barImageUrl) && el('div.cc-image-container',
+                            el('img.cc-image', {
+                                src: window.CookieConsent.config.theme.barImageUrl
+                            })
+                        ),
+                        barText
+                    )
                 ),
                 el('div.ccb__right',
                     el('div.ccb__button',
-                        el('a.ccb__edit', Language.getTranslation(window.CookieConsent.config, window.CookieConsent.config.language.current, 'barLinkSetting')),
-                        el('button.consent-given', Language.getTranslation(window.CookieConsent.config, window.CookieConsent.config.language.current, 'barBtnAcceptAll'))
+                        el('button.consent-given', Language.getTranslation(window.CookieConsent.config, window.CookieConsent.config.language.current, 'barBtnAcceptAll')),
+                        el('a.ccb__edit', Language.getTranslation(window.CookieConsent.config, window.CookieConsent.config.language.current, 'barLinkSetting'))
                     )
                 )
             ),

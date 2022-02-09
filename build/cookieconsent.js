@@ -2699,16 +2699,24 @@ var Interface = /*#__PURE__*/function () {
   _createClass(Interface, [{
     key: "buildStyle",
     value: function buildStyle() {
-      return (0, _redom.el)('style', ":root {\n        --barColor: ".concat(window.CookieConsent.config.theme.barColor, ";\n        --barTextColor: ").concat(window.CookieConsent.config.theme.barTextColor, ";\n        --barPrimaryButtonColor: ").concat(window.CookieConsent.config.theme.barPrimaryButtonColor, ";\n        --barPrimaryButtonHoverColor: ").concat(window.CookieConsent.config.theme.barPrimaryButtonHoverColor, ";\n        --barPrimaryButtonTextColor: ").concat(window.CookieConsent.config.theme.barPrimaryButtonTextColor, ";\n        --modalPrimaryButtonColor: ").concat(window.CookieConsent.config.theme.modalPrimaryButtonColor, ";\n        --modalPrimaryButtonHoverColor: ").concat(window.CookieConsent.config.theme.modalPrimaryButtonHoverColor, ";\n        --modalPrimaryButtonTextColor: ").concat(window.CookieConsent.config.theme.modalPrimaryButtonTextColor, ";\n        --modalSecondaryButtonColor: ").concat(window.CookieConsent.config.theme.modalSecondaryButtonColor, ";\n        --modalSecondaryButtonHoverColor: ").concat(window.CookieConsent.config.theme.modalSecondaryButtonHoverColor, ";\n        --modalSecondaryButtonTextColor: ").concat(window.CookieConsent.config.theme.modalSecondaryButtonTextColor, ";\n      }"));
+      return (0, _redom.el)('style', ":root {\n        --barColor: ".concat(window.CookieConsent.config.theme.barColor, ";\n        --barTextColor: ").concat(window.CookieConsent.config.theme.barTextColor, ";\n        --barPrimaryButtonColor: ").concat(window.CookieConsent.config.theme.barPrimaryButtonColor, ";\n        --barPrimaryButtonHoverColor: ").concat(window.CookieConsent.config.theme.barPrimaryButtonHoverColor, ";\n        --barPrimaryButtonTextColor: ").concat(window.CookieConsent.config.theme.barPrimaryButtonTextColor, ";\n        --modalPrimaryButtonColor: ").concat(window.CookieConsent.config.theme.modalPrimaryButtonColor, ";\n        --modalPrimaryButtonHoverColor: ").concat(window.CookieConsent.config.theme.modalPrimaryButtonHoverColor, ";\n        --modalPrimaryButtonTextColor: ").concat(window.CookieConsent.config.theme.modalPrimaryButtonTextColor, ";\n        --modalSecondaryButtonColor: ").concat(window.CookieConsent.config.theme.modalSecondaryButtonColor, ";\n        --modalSecondaryButtonHoverColor: ").concat(window.CookieConsent.config.theme.modalSecondaryButtonHoverColor, ";\n        --modalSecondaryButtonTextColor: ").concat(window.CookieConsent.config.theme.modalSecondaryButtonTextColor, ";\n        --barImageUrl: ").concat(window.CookieConsent.config.theme.barImageUrl, "\n      }"));
     }
   }, {
     key: "buildBar",
     value: function buildBar() {
       var description = _Language.default.getTranslation(window.CookieConsent.config, window.CookieConsent.config.language.current, 'barMainText');
 
-      var div = (0, _redom.el)('div.cc-text');
-      div.innerHTML = description;
-      return (0, _redom.el)('div#cconsent-bar.ccb--hidden', (0, _redom.el)("div.ccb__wrapper", (0, _redom.el)('div.ccb__left', div), (0, _redom.el)('div.ccb__right', (0, _redom.el)('div.ccb__button', (0, _redom.el)('a.ccb__edit', _Language.default.getTranslation(window.CookieConsent.config, window.CookieConsent.config.language.current, 'barLinkSetting')), (0, _redom.el)('button.consent-given', _Language.default.getTranslation(window.CookieConsent.config, window.CookieConsent.config.language.current, 'barBtnAcceptAll'))))), window.CookieConsent.config.showCloseButton && (0, _redom.el)('div.ccb__close', '×'));
+      var barText = (0, _redom.el)('div.cc-text');
+      barText.innerHTML = description;
+      var ccbLeftQuery = 'div.ccb__left';
+
+      if (window.CookieConsent.config.theme.barImageUrl) {
+        ccbLeftQuery = 'div.ccb__left.ccb__left-with-image';
+      }
+
+      return (0, _redom.el)('div#cconsent-bar.ccb--hidden', (0, _redom.el)("div.ccb__wrapper", (0, _redom.el)(ccbLeftQuery, (0, _redom.el)('div.cc-text-container', window.CookieConsent.config.theme.barImageUrl && (0, _redom.el)('div.cc-image-container', (0, _redom.el)('img.cc-image', {
+        src: window.CookieConsent.config.theme.barImageUrl
+      })), barText)), (0, _redom.el)('div.ccb__right', (0, _redom.el)('div.ccb__button', (0, _redom.el)('button.consent-given', _Language.default.getTranslation(window.CookieConsent.config, window.CookieConsent.config.language.current, 'barBtnAcceptAll')), (0, _redom.el)('a.ccb__edit', _Language.default.getTranslation(window.CookieConsent.config, window.CookieConsent.config.language.current, 'barLinkSetting'))))), window.CookieConsent.config.showCloseButton && (0, _redom.el)('div.ccb__close', '×'));
     }
   }, {
     key: "buildModal",
@@ -3120,6 +3128,7 @@ var Configuration = /*#__PURE__*/function () {
         barPrimaryButtonColor: '#fff',
         barPrimaryButtonHoverColor: '#fff',
         barPrimaryButtonTextColor: '#2c7cbf',
+        barImageUrl: false,
         modalPrimaryButtonColor: '#4285f4',
         modalPrimaryButtonHoverColor: '#0d60ea',
         modalPrimaryButtonTextColor: '#fff',

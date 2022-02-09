@@ -7,7 +7,6 @@
 #cconsent-bar {
   background-color: var(--barColor);
   color: var(--barTextColor);
-  padding: 15px;
   text-align: right;
   font-family: sans-serif;
   font-size: 14px;
@@ -26,58 +25,148 @@
   transform: translateY(100%);
 }
 #cconsent-bar .ccb__wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  max-width: 1800px;
-  margin: 0 auto;
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 10px;
+}
+@media (max-width: 600px) {
+  #cconsent-bar .ccb__wrapper {
+    padding: 30px 10px;
+  }
 }
 #cconsent-bar .ccb__left {
-  align-self: center;
+  margin-bottom: 25px;
+}
+#cconsent-bar .ccb__left .cc-text-container {
+  display: flex;
+  align-items: center;
+  position: relative;
   text-align: left;
-  margin: 15px 0;
+  overflow: auto;
+}
+@media (max-width: 600px) {
+  #cconsent-bar .ccb__left .cc-text-container {
+    margin: 0 10px;
+    line-height: 18px;
+  }
+}
+#cconsent-bar .ccb__left .cc-text-container .cc-image-container {
+  display: flex;
+  align-items: center;
+  width: 175px;
+  height: auto;
+}
+@media (max-width: 600px) {
+  #cconsent-bar .ccb__left .cc-text-container .cc-image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 60px;
+    height: 60px;
+    padding: 0;
+  }
+}
+#cconsent-bar .ccb__left .cc-text-container .cc-image-container .cc-image {
+  width: 175px;
+  height: auto;
+}
+@media (max-width: 600px) {
+  #cconsent-bar .ccb__left .cc-text-container .cc-image-container .cc-image {
+    width: 60px;
+  }
+}
+#cconsent-bar .ccb__left .cc-text-container .cc-text {
+  padding-left: 20px;
+}
+@media (max-width: 600px) {
+  #cconsent-bar .ccb__left .cc-text-container .cc-text {
+    padding-left: 0;
+  }
+}
+#cconsent-bar .ccb__left .cc-text-container .cc-text .bar-text-heading {
+  color: var(--barTextColor);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+}
+@media (max-width: 600px) {
+  #cconsent-bar .ccb__left .cc-text-container .cc-text .bar-text-heading {
+    display: block;
+    font-size: 16px;
+  }
+}
+#cconsent-bar .ccb__left .cc-text-container .cc-text .bar-text {
+  color: var(--barTextColor);
+  margin-top: 8px;
+  line-height: 21px;
+}
+@media (max-width: 600px) {
+  #cconsent-bar .ccb__left-with-image .cc-text-container .cc-text .bar-text-heading {
+    margin-left: 80px;
+    min-height: 80px;
+  }
 }
 #cconsent-bar .ccb__right {
-  align-self: center;
+  width: 100%;
+  background-color: var(--barColor);
   white-space: nowrap;
 }
-#cconsent-bar .ccb__right > div {
-  display: inline-block;
-  color: #fff;
+#cconsent-bar .ccb__right .ccb__button {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  color: var(--barTextColor);
+}
+@media (max-width: 600px) {
+  #cconsent-bar .ccb__right .ccb__button {
+    flex-wrap: wrap;
+  }
 }
 #cconsent-bar a {
   text-decoration: underline;
   color: var(--barTextColor);
 }
 #cconsent-bar a.ccb__edit {
-  margin-right: 15px;
+  margin-left: 50px;
+  font-size: 14px;
+  font-weight: bold;
+  transition: all 0.5s ease-out;
+}
+@media (max-width: 600px) {
+  #cconsent-bar a.ccb__edit {
+    display: block;
+    margin: 0 auto;
+  }
 }
 #cconsent-bar a:hover, #cconsent-bar button:hover {
   cursor: pointer;
 }
 #cconsent-bar button.consent-given {
-  line-height: normal;
-  font-size: 14px;
+  padding: 8px 90px;
+  font-size: 18px;
+  line-height: 26px;
   border: none;
-  padding: 10px 10px;
+  border-radius: 5px;
   color: var(--barPrimaryButtonTextColor);
   background-color: var(--barPrimaryButtonColor);
+  transition: background-color 0.5s ease-out;
+}
+@media (max-width: 600px) {
+  #cconsent-bar button.consent-given {
+    width: 100%;
+    margin-bottom: 20px;
+  }
 }
 #cconsent-bar button.consent-given:hover {
   background-color: var(--barPrimaryButtonHoverColor);
 }
-#cconsent-bar button.consent-decline {
-  line-height: normal;
-  font-size: 14px;
-  border: none;
-  padding: 10px 10px;
-  color: var(--barPrimaryButtonColor);
-  background-color: var(--barPrimaryButtonTextColor);
-  margin-right: 10px;
-  border: 1px solid var(--barPrimaryButtonColor);
-}
 #cconsent-bar .ccb__close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 20px;
   font-weight: 600;
   cursor: pointer;
   font-size: 26px;
